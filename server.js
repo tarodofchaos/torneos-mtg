@@ -35,11 +35,11 @@ app.post("/api/tournaments", (req, res) => {
   const pass = req.headers["x-admin-password"] || "";
   if (pass !== ADMIN_PASS) return res.status(401).send("Unauthorized");
 
-  const { titulo, formato, descripcion, date, hora } = req.body;
+  const {titulo, formato, descripcion, date, hora, ubicacion, precio, premios} = req.body;
   if (!titulo || !date) return res.status(400).send("Faltan campos");
 
   const data = readData();
-  const nuevo = { id: uuidv4(), titulo, formato, descripcion, date, hora };
+  const nuevo = {id: uuidv4(), titulo, formato, descripcion, date, hora, ubicacion, precio, premios};
   data.push(nuevo);
   writeData(data);
   res.json(nuevo);
