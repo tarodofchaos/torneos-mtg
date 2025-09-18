@@ -12,8 +12,7 @@
   <div class="controls">
     <select id="monthSelect"></select>
     <button id="themeToggle">Modo oscuro</button>
-    <!-- Enlace a administración -->
-    <a href="admin.html" class="admin-link">Administrar</a>
+    <button id="adminBtn">Administrar</button>
   </div>
 </header>
 
@@ -31,6 +30,18 @@
     <p id="modal-date"></p>
     <p id="modal-format"></p>
     <p id="modal-desc"></p>
+  </div>
+</div>
+
+<!-- Modal login -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content-admin card">
+    <h2>Acceso Administración</h2>
+    <label for="loginPassword">Contraseña:</label>
+    <input type="password" id="loginPassword" placeholder="Introduce la contraseña">
+    <button id="loginSubmit" class="btn">Entrar</button>
+    <p id="loginError"></p>
+    <button id="loginCancel" class="btn cancel">Cancelar</button>
   </div>
 </div>
 

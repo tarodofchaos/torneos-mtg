@@ -97,14 +97,80 @@ function openModal(tournaments){
     modalTitle.textContent=t.titulo;
     modalDate.textContent="Fecha: "+t.date + (t.hora?" "+t.hora:"");
     modalFormat.textContent="Formato: "+t.formato;
-    modalDesc.textContent=t.descripcion||"";
+    modalDesc.innerHTML =
+      (t.descripcion?"<strong>Descripción:</strong> "+t.descripcion+"<br>":"") +
+      (t.ubicacion?"<strong>Ubicación:</strong> "+t.ubicacion+"<br>":"") +
+      (t.precio?"<strong>Precio:</strong> "+t.precio+"<br>":"") +
+      (t.premios?"<strong>Premios:</strong> "+t.premios:"");
   } else {
     modalTitle.textContent="Torneos múltiples";
     modalDate.textContent="";
     modalFormat.textContent="";
-    modalDesc.innerHTML = tournaments.map(t => `<strong>${t.titulo}</strong> (${t.formato})<br>${t.descripcion||''}`).join("<hr>");
+    modalDesc.innerHTML = tournaments.map(t =>
+      `<strong>${t.titulo}</strong> (${t.formato})<br>` +
+      (t.descripcion?"Descripción: "+t.descripcion+"<br>":"") +
+      (t.ubicacion?"Ubicación: "+t.ubicacion+"<br>":"") +
+      (t.precio?"Precio: "+t.precio+"<br>":"") +
+      (t.premios?"Premios: "+t.premios:"")
+    ).join("<hr>");
   }
 }
+
+const adminBtn = document.getElementById("adminBtn");
+const loginModal = document.getElementById("loginModal");
+const loginSubmit = document.getElementById("loginSubmit");
+const loginCancel = document.getElementById("loginCancel");
+const loginPassword = document.getElementById("loginPassword");
+const loginError = document.getElementById("loginError");
+
+// Abrir modal
+adminBtn.onclick = () => {
+  loginModal.classList.remove("hidden");
+  loginPassword.value = "";
+  loginError.textContent = "";
+};
+
+// Cancelar
+loginCancel.onclick = () => {
+  loginModal.classList.add("hidden");
+};
+
+// Validar contraseña antes de ir a admin.html
+loginSubmit.onclick = async () => {
+  const pass = loginPassword.value;
+  if(!pass) return;
+
+  try {
+    // Hacemos una prueba con la API
+    const res = await fetch("/api/tournaments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-admin-password": pass
+      },
+      body: JSON.stringify({ titulo:"Test", formato:"Test", date:"2000-01-01" })
+    });
+
+    if(res.status === 401){
+      loginError.textContent = "Contraseña incorrecta";
+      loginError.style.color = "red";
+      return;
+    }
+
+    // Contraseña correcta: borramos el torneo de prueba y navegamos
+    const data = await res.json();
+    await fetch("/api/tournaments/"+data.id+"?pass="+pass,{method:"DELETE"});
+
+    // Guardamos la contraseña en sessionStorage para admin.html
+    sessionStorage.setItem("ADMIN_PASSWORD", pass);
+    window.location.href = "admin.html";
+
+  } catch(err){
+    loginError.textContent = "Error de conexión: "+err.message;
+    loginError.style.color = "red";
+  }
+};
+
 
 // Inicializar
 loadTournaments();

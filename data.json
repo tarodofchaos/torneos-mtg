@@ -14,5 +14,29 @@
     "descripcion": "Torneo en parejas",
     "date": "2025-09-22",
     "hora": "17:00"
+  },
+  {
+    "id": "753231b2-ed63-4e3a-b50f-759b2259065d",
+    "titulo": "prueba",
+    "formato": "Commander",
+    "descripcion": "asdsas",
+    "date": "2025-09-19",
+    "hora": "11:11"
+  },
+  {
+    "id": "70e3ed20-9561-47b3-9470-18ed69245967",
+    "titulo": "prueba2",
+    "formato": "Commander",
+    "descripcion": "ssdfasf",
+    "date": "2025-09-25",
+    "hora": "22:22"
+  },
+  {
+    "id": "3e04e29d-bde6-435f-a6e3-0124ae7358d7",
+    "titulo": "prueba torneo",
+    "formato": "Commander Duel",
+    "descripcion": "",
+    "date": "2025-09-13",
+    "hora": "12:12"
   }
 ]

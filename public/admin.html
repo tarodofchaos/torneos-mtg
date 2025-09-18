@@ -5,22 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administración MTG Torneos</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- TinyMCE -->
+<script src="https://cdn.tiny.cloud/1/yswbvz9frwmzgok67t1n44c464n4fw6l9zi1ylszljkijgji/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 <header>
   <h1>Administración de Torneos MTG</h1>
+  <a href="index.html" class="admin-link">Volver al calendario</a>
 </header>
 
 <main>
-  <form id="tournamentForm">
+  <!-- Formulario oculto hasta login -->
+  <form id="tournamentForm" class="hidden card">
     <label for="titulo">Título:</label>
-    <input type="text" id="titulo" required>
+    <input type="text" id="titulo" required placeholder="Nombre del torneo">
 
     <label for="formato">Formato:</label>
     <input type="text" id="formato" placeholder="Commander, 2HG, etc." required>
 
     <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" rows="4" placeholder="Descripción del torneo"></textarea>
+    <textarea id="descripcion"></textarea>
 
     <label for="date">Fecha:</label>
     <input type="date" id="date" required>
@@ -29,23 +34,30 @@
     <input type="time" id="hora">
 
     <label for="ubicacion">Ubicación:</label>
-    <input type="text" id="ubicacion">
+    <input type="text" id="ubicacion" placeholder="Dirección o local">
 
     <label for="precio">Precio:</label>
-    <input type="text" id="precio">
+    <input type="text" id="precio" placeholder="Ej: 5€">
 
     <label for="premios">Premios:</label>
-    <input type="text" id="premios">
+    <input type="text" id="premios" placeholder="Ej: Booster packs, cartas raras...">
 
-    <label for="adminPass">Contraseña Admin:</label>
-    <input type="password" id="adminPass" placeholder="Introduce la contraseña">
-
-    <button type="submit">Añadir torneo</button>
+    <button type="submit" class="btn">Añadir torneo</button>
+    <div id="message"></div>
   </form>
-
-  <div id="message"></div>
 </main>
 
 <script src="admin.js"></script>
+<script>
+  // Inicializar TinyMCE
+  tinymce.init({
+    selector: '#descripcion',
+    height: 200,
+    menubar: false,
+    plugins: 'lists link',
+    toolbar: 'bold italic underline | bullist numlist | link',
+    placeholder: "Descripción del torneo, reglas, notas importantes..."
+  });
+</script>
 </body>
 </html>

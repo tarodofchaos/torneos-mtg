@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -5,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 const DATA = path.join(__dirname, "data.json");
-const ADMIN_PASS = process.env.ADMIN_PASSWORD || "cambiateme";
+const ADMIN_PASS = process.env.ADMIN_PASSWORD
 
 // Middleware
 app.use(express.json());
