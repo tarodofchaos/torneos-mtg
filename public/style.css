@@ -114,3 +114,18 @@ body.dark .day {
   #calendar { grid-template-columns: repeat(2,1fr); }
   header .controls { display: flex; flex-direction: column; gap: 0.5em; align-items: center; }
 }
+
+.admin-link {
+  margin-left: 0.5em;
+  padding: 0.3em 0.6em;
+  background: #1a73e8;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.85em;
+  transition: background 0.2s;
+}
+
+.admin-link:hover {
+  background: #155ab6;
+}
