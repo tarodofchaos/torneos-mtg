@@ -7,8 +7,30 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Calendario de Torneos MTG</h1>
-<div id="calendar"></div>
+<header>
+  <h1>Calendario de Torneos MTG</h1>
+  <div class="controls">
+    <select id="monthSelect"></select>
+    <button id="themeToggle">Modo oscuro</button>
+  </div>
+</header>
+
+<main>
+  <div id="calendarContainer">
+    <div id="calendar"></div>
+  </div>
+</main>
+
+<!-- Ventana flotante -->
+<div id="modal" class="hidden">
+  <div class="modal-content">
+    <span id="close">&times;</span>
+    <h2 id="modal-title">Detalles del torneo</h2>
+    <p id="modal-date"></p>
+    <p id="modal-format"></p>
+    <p id="modal-desc"></p>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>

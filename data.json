@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "1",
+    "titulo": "Torneo Commander",
+    "formato": "Commander",
+    "descripcion": "Primer torneo del mes",
+    "date": "2025-09-20",
+    "hora": "18:00"
+  },
+  {
+    "id": "2",
+    "titulo": "2 Headed Giant",
+    "formato": "2HG",
+    "descripcion": "Torneo en parejas",
+    "date": "2025-09-22",
+    "hora": "17:00"
+  }
+]
