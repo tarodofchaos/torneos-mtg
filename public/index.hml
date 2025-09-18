@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTG Torneos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Calendario de Torneos MTG</h1>
+<div id="calendar"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
