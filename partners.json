@@ -1,0 +1,12 @@
+[
+  {
+    "id": "9e904e6f-6f5f-4593-b089-2fd51232da46",
+    "nombre": "Ulises",
+    "torneoId": "2",
+    "deckType": "dragones combo",
+    "buscaDeckType": "stax, control",
+    "propuestas": [
+      "Hermes"
+    ]
+  }
+]

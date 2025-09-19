@@ -22,7 +22,21 @@
     <input type="text" id="titulo" required placeholder="Nombre del torneo">
 
     <label for="formato">Formato:</label>
-    <input type="text" id="formato" placeholder="Commander, 2HG, etc." required>
+    <select id="formato" required>
+        <option value="">-- Selecciona formato --</option>
+        <option value="Commander">Commander</option>
+        <option value="2HG">Two-Headed Giant (2HG)</option>
+        <option value="Standard">Standard</option>
+        <option value="Modern">Modern</option>
+        <option value="Pioneer">Pioneer</option>
+        <option value="Legacy">Legacy</option>
+        <option value="Vintage">Vintage</option>
+        <option value="Pauper">Pauper</option>
+        <option value="Draft">Draft</option>
+        <option value="Sealed">Sealed</option>
+        <option value="Brawl">Brawl</option>
+    </select>
+
 
     <label for="descripcion">Descripción:</label>
     <textarea id="descripcion"></textarea>

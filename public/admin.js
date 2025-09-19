@@ -12,6 +12,7 @@ if (!ADMIN_PASSWORD) {
 // Referencias a elementos del formulario
 const form = document.getElementById("tournamentForm");
 const message = document.getElementById("message");
+form.classList.remove("hidden");
 
 // Envío del formulario
 form.onsubmit = async (e) => {

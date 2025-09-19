@@ -38,5 +38,62 @@
     "descripcion": "",
     "date": "2025-09-13",
     "hora": "12:12"
+  },
+  {
+    "id": "7a262290-d96c-4f0b-a26e-d4f2550e5054",
+    "titulo": "prueba torneo",
+    "formato": "Commander Duel",
+    "descripcion": "<p>aasdfasdfasdf<span style=\"text-decoration: underline;\">asdfasdf<em>fasdfas<strong>asdfasdf</strong></em><strong>asdf</strong></span><strong>fasd</strong></p>\n<ol>\n<li><strong>asd</strong></li>\n<li><strong>ggggg</strong></li>\n<li><strong>gg</strong></li>\n</ol>",
+    "date": "2025-09-30",
+    "hora": "13:13"
+  },
+  {
+    "id": "f8c34304-2434-40d5-bc80-7b39363efcfe",
+    "titulo": "prueba torneo",
+    "formato": "aaa",
+    "descripcion": "<p>aasdasd</p>",
+    "date": "2025-09-06",
+    "hora": "14:14"
+  },
+  {
+    "id": "a2e653e3-48c8-4fd9-aef7-0ab40428a715",
+    "titulo": "prueba2",
+    "formato": "dssdfasd",
+    "descripcion": "<p>vvvf</p>",
+    "date": "2025-09-01",
+    "hora": "15:12"
+  },
+  {
+    "id": "f12962e2-1571-44de-9550-d330406db183",
+    "titulo": "prueba",
+    "formato": "Commander",
+    "descripcion": "<p>asd</p>",
+    "date": "2025-09-02",
+    "hora": "11:11",
+    "ubicacion": "Mi casa",
+    "precio": "f",
+    "premios": "as"
+  },
+  {
+    "id": "60049963-a5a1-4dd8-a8cc-cb574d8f6a63",
+    "titulo": "pruebadsdsa",
+    "formato": "dascasc",
+    "descripcion": "<p>ascc</p>",
+    "date": "2025-09-02",
+    "hora": "18:18",
+    "ubicacion": "Mi casa",
+    "precio": "sd",
+    "premios": "vd"
+  },
+  {
+    "id": "85551f5a-14f7-42ed-8c3b-74ec32bb9d15",
+    "titulo": "tttt",
+    "formato": "2HG",
+    "descripcion": "<p>agfg</p>",
+    "date": "2025-10-01",
+    "hora": "11:11",
+    "ubicacion": "12132",
+    "precio": "12",
+    "premios": "12312"
   }
 ]

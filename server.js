@@ -55,6 +55,56 @@ app.delete("/api/tournaments/:id", (req, res) => {
   res.sendStatus(204);
 });
 
+const PARTNERS = path.join(__dirname, "partners.json");
+
+// Leer y escribir parejas
+function readPartners() {
+  try {
+    const raw = fs.readFileSync(PARTNERS, "utf8");
+    return JSON.parse(raw || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function writePartners(arr) {
+  fs.writeFileSync(PARTNERS, JSON.stringify(arr, null, 2));
+}
+
+// --- API: Añadir solicitud de pareja ---
+app.post("/api/partners", (req, res) => {
+  const { nombre, torneoId, deckType, buscaDeckType } = req.body;
+  if (!nombre || !torneoId) return res.status(400).send("Faltan campos");
+
+  const data = readPartners();
+  const nuevo = { id: uuidv4(), nombre, torneoId, deckType, buscaDeckType, propuestas: [] };
+  data.push(nuevo);
+  writePartners(data);
+  res.json(nuevo);
+});
+
+// --- API: Proponer pareja ---
+app.post("/api/partners/:id/propose", (req, res) => {
+  const id = req.params.id;
+  const { proponente } = req.body;
+  const data = readPartners();
+  const persona = data.find(p => p.id === id);
+  if (!persona) return res.status(404).send("No encontrado");
+
+  if (!persona.propuestas.includes(proponente)) {
+    persona.propuestas.push(proponente);
+    writePartners(data);
+  }
+
+  res.json(persona);
+});
+
+// --- API: Ver todas las solicitudes ---
+app.get("/api/partners", (req, res) => {
+  res.json(readPartners());
+});
+
+
 // --- ICS export ---
 app.get("/api/tournaments/ics", (req, res) => {
   const data = readData();

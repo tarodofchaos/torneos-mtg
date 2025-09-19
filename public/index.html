@@ -33,6 +33,30 @@
   </div>
 </div>
 
+<!-- Botón para abrir modal de 2HG -->
+<button id="openPartnersBtn" class="btn-primary">
+  Buscar pareja 2HG
+</button>
+
+<!-- Modal de parejas -->
+<div id="partnersModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closePartnersBtn" class="close">&times;</span>
+    <h2>Buscar pareja 2HG</h2>
+
+    <form id="partnerForm">
+      <input type="text" id="nombre" placeholder="Tu nombre" required>
+      <select id="torneoId" required></select>
+      <input type="text" id="deckType" placeholder="Tu tipo de mazo">
+      <input type="text" id="buscaDeckType" placeholder="Busco pareja con mazo">
+      <button type="submit">Añadir solicitud</button>
+    </form>
+
+    <h3>Solicitudes activas</h3>
+    <div id="partnersList"></div>
+  </div>
+</div>
+
 <!-- Modal login -->
 <div id="loginModal" class="modal hidden">
   <div class="modal-content-admin card">
@@ -46,5 +70,6 @@
 </div>
 
 <script src="app.js"></script>
+<script src="partners.js"></script>
 </body>
 </html>

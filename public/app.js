@@ -17,9 +17,18 @@ const now = new Date();
 monthSelect.value = now.getMonth();
 
 // Modo oscuro
+if(localStorage.getItem("darkMode") === "true") {
+  document.body.classList.add("dark");
+  themeToggle.textContent = "Modo claro";
+} else {
+  themeToggle.textContent = "Modo oscuro";
+}
+
 themeToggle.onclick = () => {
   document.body.classList.toggle("dark");
-  themeToggle.textContent = document.body.classList.contains("dark") ? "Modo claro" : "Modo oscuro";
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("darkMode", isDark);
+  themeToggle.textContent = isDark ? "Modo claro" : "Modo oscuro";
 }
 
 // --- Cargar torneos ---
@@ -123,11 +132,17 @@ const loginCancel = document.getElementById("loginCancel");
 const loginPassword = document.getElementById("loginPassword");
 const loginError = document.getElementById("loginError");
 
-// Abrir modal
+// Abrir modal solo si no hay contraseña en sessionStorage/localStorage
 adminBtn.onclick = () => {
-  loginModal.classList.remove("hidden");
-  loginPassword.value = "";
-  loginError.textContent = "";
+  const storedPass = sessionStorage.getItem("ADMIN_PASSWORD") || localStorage.getItem("ADMIN_PASSWORD");
+  if(storedPass) {
+    // Contraseña ya almacenada, navegar directo
+    window.location.href = "admin.html";
+  } else {
+    loginModal.classList.remove("hidden");
+    loginPassword.value = "";
+    loginError.textContent = "";
+  }
 };
 
 // Cancelar
@@ -157,12 +172,14 @@ loginSubmit.onclick = async () => {
       return;
     }
 
-    // Contraseña correcta: borramos el torneo de prueba y navegamos
+    // Contraseña correcta: borrar torneo de prueba y navegar
     const data = await res.json();
     await fetch("/api/tournaments/"+data.id+"?pass="+pass,{method:"DELETE"});
 
-    // Guardamos la contraseña en sessionStorage para admin.html
+    // Guardamos la contraseña en sessionStorage y localStorage
     sessionStorage.setItem("ADMIN_PASSWORD", pass);
+    localStorage.setItem("ADMIN_PASSWORD", pass);
+
     window.location.href = "admin.html";
 
   } catch(err){
